@@ -32,6 +32,99 @@ enum my_keycodes {
   LED_EQL,
   QMKBEST
 };
+// French chars
+enum unicode_names {
+  E_AIG,
+  E_AIG_MAJ,
+  E_GRV,
+  E_GRV_MAJ,
+  E_CIRC,
+  E_CIRC_MAJ,
+  E_TREMA,
+  E_TREMA_MAJ,
+  A_CIRC,
+  A_CIRC_MAJ,
+  A_GRV,
+  A_GRV_MAJ,
+  C_CEDILLE,
+  C_CEDILLE_MAJ,
+  CARRE,
+  CUBE,
+  EURO,
+  BAHT,
+  COPYRIGHT,
+  REGISTERED,
+  OMEGA,
+  OMEGA_MAJ,
+  O_CIRC,
+  O_CIRC_MAJ,
+  U_GRAV,
+  U_GRAV_MAJ,
+  OE,
+  OE_MAJ,
+  PI,
+  DEGREE,
+  N_TILDE,
+  N_TILDE_MAJ,
+  MICRO,
+  SIGMA,
+  INFEQ,
+  SUPEQ,
+  GUILL_G,
+  GUILL_R,
+  UNEQUAL,
+  PRETTYMUCH,
+  INFINIT,
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+  [E_AIG]  = 0x00E9,  // 0 é
+  [E_AIG_MAJ] = 0x00C9,  // 1 É
+  [E_GRV]  = 0x00E8,  // 2 è
+  [E_GRV_MAJ] = 0x00C8,  // 3 È
+  [E_CIRC]  = 0x00EA,  // 4 ê
+  [E_CIRC_MAJ] = 0x00CA,  // 5 Ê
+  [E_TREMA]  = 0x00EB,  // 6 ë
+  [E_TREMA_MAJ] = 0x00CB,  // 7 Ë
+  [A_CIRC]  = 0x00E2,  // 8 â
+  [A_CIRC_MAJ] = 0x00C2,  // 9 Ê
+  [A_GRV]  = 0x00E0,  // 10 Â
+  [A_GRV_MAJ] = 0x00C0,  // 11 À
+  [C_CEDILLE]  = 0x00E7,  // 12 ç
+  [C_CEDILLE_MAJ] = 0x00C7,  // 13 Ç
+  [CARRE]  = 0x00B2,  // 14 ²
+  [CUBE] = 0x00B3,  // 15 ³
+  [EURO]  = 0x20AC,  // 16 €
+  [BAHT] = 0x0E3F,  // 17 ฿
+  [COPYRIGHT]  = 0x00A9,  // 18 ©
+  [REGISTERED] = 0x00AE,  // 19 ®
+  [OMEGA]  = 0x03C9,  // 20 ω
+  [OMEGA_MAJ] = 0x03A9,  // 21 Ω
+  [O_CIRC]  = 0x00F4,  // 22 ô
+  [O_CIRC_MAJ] = 0x00D4,  // 23 Ô
+  [U_GRAV]  = 0x00F9,  // 24 ù
+  [U_GRAV_MAJ] = 0x00D9,  // 25 Ù
+  [OE]  = 0x0153,  // 26 œ
+  [OE_MAJ] = 0x0152,  // 27 Œ
+  [PI] = 0x03C0, // 28 π
+  [DEGREE] = 0x00B0, // 29 °
+  [N_TILDE]  = 0x00F1,  // 30 ñ
+  [N_TILDE_MAJ] = 0x00D1,  // 31 Ñ
+  [MICRO]  = 0x00B5,  // 32 µ
+  [SIGMA] = 0x03C3,  // 33 σ
+  [INFEQ]  = 0x2264,  // 34 ≤
+  [SUPEQ] = 0x2265,  // 35 ≥
+  [GUILL_G]  = 0x00AB,  // 36 «
+  [GUILL_R] = 0x00BB,  // 37 »
+  [UNEQUAL]  = 0x2260,  // 38 ≠
+  [PRETTYMUCH] = 0x2248,  // 39 ≈
+  [INFINIT] = 0x221E,  // 40 ∞
+};
+
+// initialize unicode mode
+void eeconfig_init_user(void) {
+  set_unicode_input_mode(UC_WINC);
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -43,25 +136,55 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //      Ct_L     Win_L    Alt_L                                SPACE                               Alt_R    FN       Ct_R     Left     Down     Right
 
     [0] = LAYOUT(
-        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PSCR,          KC_MUTE,
+        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,          KC_MUTE,
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,          KC_HOME,
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,          KC_PGUP,
-        KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,           KC_PGDN,
-        KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT, KC_UP,   KC_END,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,          KC_END,
+        KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,           KC_PGUP,
+        KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT, KC_UP,   KC_PGDN,
         KC_LCTL, KC_LGUI, KC_LALT,                             KC_SPC,                             KC_DEL, MO(1),   KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT
     ),
+/* FRENCH
+ * .--------------------------------------------------------------------------------------------------------------------------------------.
+ * |        |        |  ² ³   |  é É   |  €     |        |        |  ≈     |  ≠     |        |        |        |  ô Ô   |  °     |        |
+ * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
+ * |        |  â Â   |   ê Ê  |  è È   |  © ®   |        |  «     |        |  »     |  ∞     |  ù Ù   |  œ Œ   |  ω Ω   |  π     |        |
+ * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
+ * |        |  à Â   |        |  ë Ë   |        |        |        |        |        |        |        |        |        |        |        |
+ * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
+ * |        |        |        |  ç Ç   |        |  ฿     |        |        |        |  ñ Ñ   |  µ     |  ≤     |  ≥     |        |        |
+ * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
+ * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
+ * '--------------------------------------------------------------------------------------------------------------------------------------'
+ */
+
+  /*[_FR] = LAYOUT_ortho_5x15(*/
+    /*_______, _______,XP(14,15),XP(0,1), X(16)  , _______, _______,  X(39) ,  X(38) , _______, _______, _______,XP(22,23),  X(29) , _______,*/
+    /*_______, XP(8,9), XP(4,5), XP(2,3),XP(18,19), _______,  X(36), _______,  X(37) ,  X(40) ,XP(24,25),XP(26,27),XP(20,21), X(28), _______,*/
+    /*_______,XP(10,11), X(33) , XP(6,7), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,*/
+    /*_______, _______, _______,XP(12,13),_______, X(17)  , _______, _______, _______,XP(30,31), X(32) , X(34)  ,  X(35) , _______, _______,*/
+    /*_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______*/
+  /*),*/
+
 
     [1] = LAYOUT(
-        _______, KC_CALC, KC_MYCM, KC_MSEL, KC_MAIL,  KC_WHOM, _______, _______, _______, _______, _______, KC_WAKE, KC_SLEP, KC_PAUS,         _______,
-      LED_TILDE, LED_1,  LED_2,   LED_3,   LED_4,    LED_5,   LED_6,   LED_7,   LED_8,   LED_9,   LED_0,   LED_MINS, LED_EQL,  KC_INS,         KC_SLCK,
-        _______, RGB_SAI, RGB_VAI, RGB_HUI, RGB_TOG,  _______, _______, _______, _______, _______, _______, _______, _______, QK_BOOT,         KC_BRIU,
-       _______, RGB_RMOD, RGB_VAD, RGB_MOD, RGB_SPI, _______,  _______, _______, _______, QMKBEST, _______, _______,         _______,          KC_BRID,
-        _______,          _______, _______, _______, _______,  _______, NK_TOGG, _______, _______, _______, _______,         _______, KC_MPLY, KC_PWR,
-        _______, _______, _______,                             _______,                            KC_RALT, _______, KC_APP, KC_MPRV, KC_MSTP, KC_MNXT
+      _______, KC_CALC,   KC_MYCM,  KC_MSEL,  KC_MAIL,   KC_WHOM, _______, _______, _______, _______,  _______,   KC_WAKE, KC_SLEP,   KC_PAUS,          _______,
+      _______, _______,   XP(14,15),XP(4,5),  X(16)  ,   _______, _______,  X(39) ,  X(38) , _______,  _______,   _______, _______,    KC_INS,          KC_SLCK,
+      _______, XP(8,9),   XP(6,7),  XP(0,1),  XP(18,19), _______,  X(36),   X(37), XP(24,25), XP(26,27), XP(24,25), XP(20,21), X(28),   QK_BOOT,          KC_BRIU,
+      _______, XP(10,11), X(33),    XP(2,3),  _______,   RGB_SAI, RGB_VAI, RGB_HUI, RGB_TOG,  X(40) ,  _______,     X(35),            _______,          KC_BRID,
+      _______,             _______, _______, XP(12,13), RGB_RMOD, RGB_VAD, RGB_MOD, RGB_SPI, XP(30,31),  X(32),     X(34),            _______, KC_MPLY, KC_PWR,
+      _______, _______,    _______,                               _______,                             KC_RALT,   _______, KC_APP,    KC_MPRV, KC_MSTP, KC_MNXT
     ),
 
 };
 
+    /*[1] = LAYOUT(*/
+        /*_______, KC_CALC, KC_MYCM, KC_MSEL, KC_MAIL,  KC_WHOM, _______, _______, _______, _______, _______, KC_WAKE, KC_SLEP, KC_PAUS,         _______,*/
+      /*LED_TILDE, LED_1,  LED_2,   LED_3,   LED_4,    LED_5,   LED_6,   LED_7,   LED_8,   LED_9,   LED_0,   LED_MINS, LED_EQL,  KC_INS,         KC_SLCK,*/
+        /*_______, RGB_SAI, RGB_VAI, RGB_HUI, RGB_TOG,  XP(0,1), _______, _______, _______, _______, _______, _______, _______, QK_BOOT,         KC_BRIU,*/
+       /*_______, RGB_RMOD, RGB_VAD, RGB_MOD, RGB_SPI, _______,  _______, _______, _______, QMKBEST, _______, _______,         _______,          KC_BRID,*/
+        /*_______,          _______, _______, _______, _______,  _______, NK_TOGG, _______, _______, _______, _______,         _______, KC_MPLY, KC_PWR,*/
+        /*_______, _______, _______,                             _______,                            KC_RALT, _______, KC_APP, KC_MPRV, KC_MSTP, KC_MNXT*/
+    /*),*/
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
   // https://beta.docs.qmk.fm/using-qmk/simple-keycodes/feature_advanced_keycodes#alt-escape-for-alt-tab-id-alt-escape-for-alt-tab

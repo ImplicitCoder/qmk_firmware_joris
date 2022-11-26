@@ -73,3 +73,5 @@
 #    undef ENABLE_RGB_MATRIX_SOLID_SPLASH               // Single color pulses from key hit. All else black. (Using solid_reactive_wide instead).
 #    undef ENABLE_RGB_MATRIX_SOLID_MULTISPLASH          // Single color pulses from muli-keys. All else black. (Using solid_reactive_wide instead).
 #endif
+
+#define UNICODE_SELECTED_MODES UC_WINC
