@@ -168,11 +168,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [1] = LAYOUT(
       _______, KC_CALC,   KC_MYCM,  KC_MSEL,  KC_MAIL,   KC_WHOM, _______, _______, _______, _______,  _______,   KC_WAKE, KC_SLEP,   KC_PAUS,          _______,
-      _______, _______,   XP(14,15),XP(4,5),  X(16)  ,   _______, _______,  X(39) ,  X(38) , _______,  _______,   _______, _______,    KC_INS,          KC_SLCK,
-      _______, XP(8,9),   XP(6,7),  XP(0,1),  XP(18,19), _______,  X(36),   X(37), XP(24,25), XP(26,27), XP(24,25), XP(20,21), X(28),   QK_BOOT,          KC_BRIU,
+      _______, _______,   XP(14,15),XP(4,5),  X(16)  ,   _______, _______,  X(39) ,  X(38) , _______,  _______,   XP(20,21), _______,    KC_INS,          KC_SLCK,
+      _______, XP(8,9),   XP(6,7),  XP(0,1),  XP(18,19), _______,  X(36),   X(37), XP(24,25), XP(26,27), XP(24,25), XP(22,23), X(28),   QK_BOOT,          KC_BRIU,
       _______, XP(10,11), X(33),    XP(2,3),  _______,   RGB_SAI, RGB_VAI, RGB_HUI, RGB_TOG,  X(40) ,  _______,     X(35),            _______,          KC_BRID,
       _______,             _______, _______, XP(12,13), RGB_RMOD, RGB_VAD, RGB_MOD, RGB_SPI, XP(30,31),  X(32),     X(34),            _______, KC_MPLY, KC_PWR,
-      _______, _______,    _______,                               _______,                             KC_RALT,   _______, KC_APP,    KC_MPRV, KC_MSTP, KC_MNXT
+      UC_MOD, _______,    _______,                               _______,                             KC_RALT,   _______, KC_APP,    KC_MPRV, KC_MSTP, KC_MNXT
     ),
 
 };
